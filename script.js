@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Music section logic
     // Song Data
     const playlistData = {
-        'music1.mp3': {
+        'musics/whoknows.mp3': {
             title: 'Who Knows',
             author: 'Daniel Caesar',
             image: 'images/whoknows-danielcaesar.png', 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 15, text: "Yeah, girl you, and I'd like that" }
             ]
         },
-        'music2.mp3': {
+        'musics/disarankandibandung.mp3': {
             title: 'disarankan di bandung',
             author: 'Dongker, Jason Ranti',
             image: 'images/disarankandibandung-dongker-jasonranti.png', 
@@ -97,16 +97,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 bg: '#fdf6e3', box: '#fff0f5', text: '#5e4b45', accent: '#d8a7b1'
             },
             lyrics: [
-                { time: 0, text: "Bajingan! Keparat! Baiknya m'reka masuk neraka" },
-                { time: 5, text: "Untungnya ku bertemu denganmu" },
-                { time: 10, text: "Di sela sempit hidup ini" },
-                { time: 15, text: "Di Bandung, di sana" },
-                { time: 20, text: "Kulihat wajah yang lain" },
-                { time: 25, text: "Di Bandung, di mana" },  
-                { time: 30, text: "Gerangan dia berada?" }
+                { time: 10, text: "Silau layar ponsel terlihat ajakan" },
+                { time: 13, text: "Bertemu di lapang kampusku yang lama" },
+                { time: 17, text: "Mengenang obrolan dan berbagai ingatan" },
+                { time: 22, text: "P'ristiwa penting di masa laluku" },
+                { time: 42, text: "Tak hanya sekali, ku merasa mesra" },
+                { time: 46, text: "Berharap mentari terbit dari barat" },  
+                { time: 50, text: "Kami sudah muak, putus asa besar" },
+                { time: 55, text: "Mimpi tak pernah berjalan lancar" },
+                { time: 59, text: "Bajingan! Keparat! Baiknya m'reka masuk neraka" },
+                { time: 67, text: "Untungnya ku bertemu denganmu" },
+                { time: 72, text: "Di sela sempit hidup ini" },
+                { time: 75, text: "Di Bandung, di sana" },
+                { time: 85, text: "Kulihat wajah yang lain" },
+                { time: 90, text: "Di Bandung, di mana" },
+                { time: 95, text: "Gerangan dia berada?" },
+                { time: 100, text: "Di Bandung, di Ganesha" },
+                { time: 105, text: "Bibirnya merah di kanvas" },
+                { time: 110, text: "Di Bandung, di Ganesha" },
+                { time: 115, text: "Kulihat bukunya di kelas" },
+                { time: 120, text: "Di Bandung, di Ganesha" },
+                { time: 125, text: "Nama kita terukir jelas" },
+                { time: 130, text: "Di Bandung, di Ganesha" },
+                { time: 135, text: "Waktu-waktu merintis" },
+                { time: 140, text: "Di Bandung, di Ganesha" },
+                { time: 145, text: "Rasa kita dibaptis" }
             ]
         },
-        'music3.mp3': {
+        'musics/diakhirperang.mp3': {
             title: 'Di Akhir Perang',
             author: 'Nadin Amizah',
             image: 'images/diakhirperang-nadinamizah.png', 
@@ -166,11 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
             audio.ontimeupdate = () => {
                 songData.lyrics.forEach((line, index) => {
                     if (audio.currentTime >= line.time) {
-                        document.querySelectorAll('.lyric-line').forEach(el => el.classList.remove('active'));
+                        const allLines = document.querySelectorAll('.lyric-line');
+                        allLines.forEach(el => el.classList.remove('active'));
+
                         const activeLine = document.getElementById(`line-${index}`);
                         if (activeLine) {
                             activeLine.classList.add('active');
-                            document.getElementById('lyrics-active').style.top = `-${index * 45}px`;
+
+                            const wrapper = document.getElementById('lyrics-wrapper');
+                            const lyricsActiveContainer = document.getElementById('lyrics-active');
+                            
+                            const scrollPos = activeLine.offsetTop - (wrapper.offsetHeight / 2) + (activeLine.offsetHeight / 2);
+                            lyricsActiveContainer.style.top = `-${scrollPos}px`;
                         }
                     }
                 });

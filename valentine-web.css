@@ -23,6 +23,7 @@ body {
     min-height: 100vh;
     overflow: hidden;
     transition: background-color 0.8s ease, color 0.8s ease; 
+    overflow-x: hidden;
 }
 
 .slide {
@@ -253,8 +254,9 @@ input {
     position: relative;
     width: 100%;
     margin-top: 15px;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%); 
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    padding: 0 15px;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
 }
 
 #lyrics-active {
@@ -277,21 +279,27 @@ input {
 }
 
 .lyric-line {
-    font-size: 1.2rem; 
+    font-size: 0.95rem; 
     color: inherit;
     opacity: 0.4;
-    margin: 18px 0;
+    margin: 20px 0;
     transition: all 0.4s ease;
     font-weight: 600;
     min-height: 28px;
+    line-height: 1.4;
+    white-space: normal !important; 
+    word-wrap: break-word;
+    display: block;
+    width: 100%;
+    text-align: left; 
     transform-origin: left center; 
 }
 
 .lyric-line.active {
     opacity: 1;
-    transform: scale(1.1); 
+    transform: scale(1.05); 
     text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    margin-left: 5px; 
+    margin-left: 0px; 
 }
 
 /* Fades and buttons*/
@@ -322,80 +330,108 @@ input {
    background: var(--accent-dynamic);
    color: var(--bg-dynamic);
 }
-
-/* Device responsive */
-@media (max-width: 768px) {
-    .music-layout { flex-direction: column; gap: 20px; }
-    .music-sidebar { width: 100%; flex-direction: row; overflow-x: auto; flex: none; align-items: center;}
-    .song-item { flex: 0 0 auto; }
-    #album-art { width: 80px; height: 80px; }
-}
-
-/* Floating symbol */
 .floating-symbol {
-    position: absolute;
+    position: absolute; 
     color: var(--pink-lavender);
-    pointer-events: none;
-    z-index: -1;
-    animation: floatUp 6s linear infinite;
+    pointer-events: none; 
+    z-index: -1; 
+    animation: floatUp 6s linear infinite; 
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    0% { 
+        transform: translateY(100vh) scale(0.5); 
+        opacity: 0; 
+    }
+    50% { 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: translateY(-10vh) scale(1.2); 
+        opacity: 0; 
+    }
 }
+/* Device responsive */
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto !important;
+        overflow-x: hidden;
+    }
 
-/* 'Who are you?' text - SLIDE 1*/
-#slide-1 p {
-    font-size: 1.2rem; 
-    font-weight: 600;  
-    margin-top: 0;    
-    margin-bottom: 20px; 
-    color: var(--van-dyke); 
-    opacity: 0.8;      
-}
+    .slide {
+        padding: 10px;
+        min-height: 100vh;
+        height: auto;
+        display: flex;
+    }
 
-/* Gaps - SLIDE 2*/
-#slide-2 {
-    justify-content: center;
-    gap: 15px; 
-    max-width: 800px; 
-    margin: 0 auto; 
-}
+    .music-layout {
+        flex-direction: column;
+        gap: 15px; 
+        width: 100%;
+        margin: 0;
+    }
 
-/* 'Tap The Heart' title - SLIDE 2 */
-#slide-2 .title-valentine {
-    margin-bottom: 0 !important; 
-    font-size: 3rem; 
-    line-height: 1.2;
-}
+    .music-sidebar {
+        width: 100% !important;
+        background: rgba(255, 255, 255, 0.4) !important; 
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        padding: 10px !important;
+        gap: 8px;
+        border-radius: 15px;
+        backdrop-filter: blur(5px);
+    }
 
-/* 'Fill the bar!' text - SLIDE 2 */
-#slide-2 p {
-    margin: 0 !important; 
-    opacity: 0.7;
-}
+    .song-item {
+        flex: 0 0 auto;
+        padding: 8px 15px !important; 
+        font-size: 0.75rem !important;
+        min-width: 120px !important;
+        text-align: center;
+    }
 
-/* Interactive heart - SLIDE 2*/
-#main-heart {
-    margin: 5px 0 !important; 
-    font-size: 10rem !important; 
-    line-height: 1;
-}
+    .custom-box {
+        padding: 20px 15px !important; 
+        border-radius: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-/*For Progress bar - SLIDE 2*/
-.progress-container {
-    margin-top: 5px !important;
-    margin-bottom: 20px !important; 
-}
+    .music-header {
+        gap: 10px;
+    }
 
-/* For short letter - SLIDE 2 */
-.main-message {
-    font-size: 1rem !important;
-    line-height: 1.6; 
-    margin-top: 0 !important;
-    padding: 0 20px; 
-    max-width: 600px; 
-    color: var(--van-dyke);
+    #album-art {
+        width: 60px; 
+        height: 60px;
+    }
+
+    .header-text h2 { font-size: 1.1rem; margin: 0; }
+    .header-text h4 { font-size: 0.8rem; }
+
+    #lyrics-wrapper {
+        height: 150px; 
+        padding: 0 5px;
+    }
+
+    .lyric-line {
+        font-size: 0.9rem !important;
+        line-height: 1.3;
+        white-space: normal !important;
+        word-wrap: break-word;
+        text-align: center;
+        margin: 15px 0;
+        transform-origin: center center;
+    }
+
+    .lyric-line.active {
+        transform: scale(1.02) !important; 
+    }
+
+    #backBtn {
+        margin: 20px auto !important;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
