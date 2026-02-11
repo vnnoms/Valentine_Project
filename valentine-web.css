@@ -104,3 +104,22 @@ input:focus {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-30px) rotate(15deg); }
 }
+
+#main-heart {
+    user-select: none; 
+    -webkit-tap-highlight-color: transparent; 
+    color: var(--van-dyke);
+}
+
+#viewMessageBtn {
+    padding: 15px 40px;
+    background-color: var(--pink-lavender);
+    color: var(--van-dyke);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(200, 161, 177, 0.3);
+    transition: transform 0.1s ease;
+}

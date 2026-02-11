@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="valentine-web.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </head>
@@ -25,9 +26,23 @@
         </div>
         <button id="loginButton">Unlock My Message</button>
     </section>
-    <section id="slide-2" class="slide hidden">
-          <h2>To My Dearest Aluvia Daniella,</h2>
-          <p>On this special day, I want to remind you how much you mean to me. You are the light of my life and the reason for my happiness. Happy Valentine's Day!</p>
+    
+    <section id="slide-2" class="slide" style="display: none;">
+        <h1 class="title-valentine">Tap the HEART! &hearts;</h1>
+        
+        <div id="main-heart" style="font-size: 10rem; cursor: pointer; transition: all 0.5s; color: var(--pink-lavender);">&hearts;</div>
+        
+        <div class="progress-container" style="width: 250px; height: 20px; border: 2px solid var(--van-dyke); border-radius: 15px; overflow: hidden; background: white;">
+            <div id="progress-fill" style="width: 0%; height: 100%; background: var(--pink-lavender); transition: width 0.3s;"></div>
+        </div>
+
+        <p id="finalContent" class="main-message">
+            On this special day, I want to remind you how much you mean to me. 
+            You are the light of my life and the reason for my happiness. 
+            Happy Valentine's Day!
+        </p>
+
+        <button id="viewMessageBtn" style="display: none;">View My Message Now</button>
     </section>
 </body>
 </html>

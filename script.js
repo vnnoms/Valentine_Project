@@ -68,5 +68,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+let tapCount = 0;
+const maxTaps = 10;
+
+const mainHeart = document.getElementById('main-heart');
+const progressFill = document.getElementById('progress-fill');
+const finalMessage = document.getElementById('final-message');
+
+mainHeart.onclick = function() {
+    if (tapCount < maxTaps) {
+        tapCount++;
+        
+        mainHeart.style.transform = "scale(1.2)";
+        setTimeout(() => { mainHeart.style.transform = "scale(1)"; }, 100);
+
+        let percentage = (tapCount / maxTaps) * 100;
+        progressFill.style.width = percentage + "%";
+        
+        confetti({
+            particleCount: 10,
+            spread: 30,
+            origin: { y: 0.7 },
+            colors: ['#48372f']
+        });
+
+        if (tapCount === maxTaps) {
+            // EFEK MELEDAK
+            mainHeart.style.transition = "all 0.5s ease-out";
+            mainHeart.style.transform = "scale(8)";
+            mainHeart.style.opacity = "0";
+
+            setTimeout(() => {
+                mainHeart.style.display = 'none'; 
+                const viewBtn = document.getElementById('viewMessageBtn');
+                if (viewBtn) {
+                    viewBtn.style.display = 'block'; 
+                
+                confetti({
+                    particleCount: 200,
+                    spread: 100,
+                    origin: { y: 0.6 }
+                });
+            }, 500);
+        }
+    }
+};
     createHearts();
 });
