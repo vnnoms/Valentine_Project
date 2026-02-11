@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --pink-lavender: rgb(200, 161, 177);
+  --isabelline: rgb(244, 243, 238);
+  --van-dyke: rgb(72, 55, 47);
+}
+
+body {
+  background-color: var(--isabelline);
+  color: var(--van-dyke);
+  font-family: 'Gabarito', sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;     
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.slide {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 600px; 
+    gap: 20px; 
+}
+
+#slide-1 {
+    display: flex;
+    margin-bottom: -20px; 
+    color: var(--van-dyke);
+    font-weight: 600;
+}
+
+.title-valentine {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0; 
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    width: 100%;
+    align-items: center;
+}
+
+input {
+    padding: 14px;
+    border-radius: 15px;
+    border: 2px solid var(--pink-lavender);
+    width: 300px;
+    font-family: 'Gabarito', sans-serif;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--van-dyke);
+    box-shadow: 0 0 10px rgba(72, 55, 47, 0.1);
+}
+
+#loginButton {
+    padding: 15px 40px;
+    background-color: var(--pink-lavender);
+    color: var(--van-dyke);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(200, 161, 177, 0.3);
+}
+
+#loginButton:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(200, 161, 177, 0.5);
+}
+
+.floating-symbol {
+    position: fixed;
+    z-index: -1; 
+    pointer-events: none; 
+    color: var(--pink-lavender);
+    opacity: 0.6;
+    animation: floatAnimation 5s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+}
