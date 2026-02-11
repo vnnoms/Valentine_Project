@@ -92,9 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const progressContainer = document.querySelector('.progress-container');
                     if (progressContainer) progressContainer.style.display = 'none';
 
-                    setTimeout(() => {
+                   setTimeout(() => {
                         mainHeart.style.display = 'none'; 
-                        if (viewBtn) viewBtn.style.display = 'block'; 
+                        
+                        goToSlide(3); 
                         
                         confetti({
                             particleCount: 200,
@@ -123,6 +124,21 @@ document.addEventListener('DOMContentLoaded', () => {
         viewBtn.addEventListener('mouseleave', () => {
             viewBtn.style.transform = 'perspective(500px) rotateX(0) rotateY(0) scale(1)';
         });
+
+        viewBtn.addEventListener('click', () => {
+            goToSlide(3);
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#c8a1b1', '#ffffff']
+            });
+        });
+    }
+
+    const backBtn = document.getElementById('backBtn');
+    if (backBtn) {
+        backBtn.onclick = () => goToSlide(1);
     }
 
     createHearts();

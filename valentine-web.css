@@ -8,13 +8,13 @@
   --pink-lavender: rgb(200, 161, 177);
   --isabelline: rgb(244, 243, 238);
   --van-dyke: rgb(72, 55, 47);
+  --pistachio: rgb(170, 180, 120);
 }
 
 body {
   background-color: var(--isabelline);
   color: var(--van-dyke);
   font-family: 'Gabarito', sans-serif;
-  margin: 0;
   display: flex;
   flex-direction: column; 
   justify-content: center; 
@@ -122,4 +122,30 @@ input:focus {
     font-size: 1.1rem;
     box-shadow: 0 4px 15px rgba(200, 161, 177, 0.3);
     transition: transform 0.1s ease;
+}
+
+.custom-box {
+    background-color: var(--pistachio);
+    padding: 40px;
+    border-radius: 30px; 
+    width: 85%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(200, 161, 177, 0.25); 
+    margin: 20px 0;
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--van-dyke);
+    color: var(--van-dyke);
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.secondary-btn:hover {
+    background: var(--van-dyke);
+    color: var(--isabelline);
 }
