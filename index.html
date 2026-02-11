@@ -10,13 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="valentine-web.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
-</body>
 </head>
 
 <body>
     <div class="floating-symbol" style="top: 10%; left: 10%;">&hearts;</div>
 
+<!-- SLIDE-1 LOGIN SCREEN  -->
     <section id="slide-1" class="slide">
         <h1 class="title-valentine">Happy Valentine's Day</h1>
         <p>Who are you?</p>
@@ -26,15 +25,16 @@
         </div>
         <button id="loginButton">Unlock My Message</button>
     </section>
-    
+
+<!-- /* SLIDE-2 HEART INTERACTION */ -->
     <section id="slide-2" class="slide" style="display: none;">
         <h1 class="title-valentine">Tap the HEART! &hearts;</h1>
         <p>Fill the bar!</p>
         
-        <div id="main-heart" style="font-size: 10rem; cursor: pointer; transition: all 0.5s; color: var(--pink-lavender);">&hearts;</div>
+        <div id="main-heart">&hearts;</div>
         
-        <div class="progress-container" style="width: 250px; height: 20px; border: 2px solid var(--van-dyke); border-radius: 15px; overflow: hidden; background: white;">
-            <div id="progress-fill" style="width: 0%; height: 100%; background: var(--pink-lavender); transition: width 0.3s;"></div>
+        <div class="progress-container">
+            <div id="progress-fill"></div>
         </div>
 
         <p id="finalContent" class="main-message">
@@ -44,21 +44,61 @@
         </p>
     </section>
 
+<!-- SLIDE-3 MUSIC & LETTER -->
     <section id="slide-3" class="slide" style="display: none;">
-        <div class="custom-box">
-            <h2 style="color: var(--van-dyke); margin-bottom: 10px;">To the dearest one, Aluvia.</h2>
-            <p style="font-size: 0.95rem; line-height: 1.5;">
-                "Never passed through my mind that we've grown so close," 
-                has always been the thoughts which wanders carefree in my mind.
-                You will always be precious to me. Whether storms, catastrophes, or any challenges come our way, 
-                you've been always there for me.
-                Several months feels like a thousand years of happiness whenever I'm with you.
-                You've seen through me, my sorrows, my woes, my flaws, yet you still accept me the way I am.
-                Thankyou for always being here within all of these times. 
-                Happy Valentine's Day, my dear. You are so loved.
-            </p>
+        
+        <div class="music-layout">
+            
+            <div class="music-sidebar dynamic-element">
+                <p style="font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; opacity: 0.8;">OUR PLAYLIST</p>
+                <div class="song-item" onclick="changeMusic('music1.mp3')">🎵 Who Knows</div>
+                <div class="song-item" onclick="changeMusic('music2.mp3')">🎵 disarankan di bandung</div>
+                <div class="song-item" onclick="changeMusic('music3.mp3')">🎵 Di Akhir Perang</div>
+            </div>
+
+            <div class="content-area">
+                
+                <div id="letter-view" class="custom-box fade-box default-theme">
+                    <h2 style="margin-bottom: 10px;">To the dearest one, Aluvia.</h2>
+                    <p style="font-size: 0.95rem; line-height: 1.5;">
+                        "Never passed through my mind that we've grown so close," 
+                        has always been the thoughts which wanders carefree in my mind.
+                        You will always be precious to me. Whether storms, catastrophes, or any challenges come our way, 
+                        you've been always there for me. Several months feels like a thousand years of happiness 
+                        whenever I'm with you. You've seen through me, my sorrows, my woes, my flaws, yet you still 
+                        accept me the way I am. Thankyou for always being here within all of these times. Happy 
+                        Valentine's Day, my dear. You are so loved.
+                    </p>
+                </div>
+
+                <div id="music-view" class="custom-box fade-box box-hidden dynamic-element" style="display: none;">
+                    
+                    <div class="music-header">
+                        <div class="header-text">
+                            <h2 id="display-title" style="margin-bottom: 5px;">Our Music</h2>
+                            <h4 id="display-author" style="opacity: 0.7;">Select a song</h4>
+                        </div>
+                        <img id="album-art" src="" alt="Album Art">
+                    </div>
+
+                    <hr style="border: 0.5px solid rgba(0,0,0, 0.1); margin: 15px 0;">
+                    
+                    <div id="lyrics-wrapper">
+                        <div id="lyrics-active">
+                            <p style="font-size: 0.95rem; font-style: italic; opacity: 0.6;">
+                                (Lirik akan berjalan di sini...)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <button id="backBtn" class="secondary-btn">Back to Start</button>
+
+        <audio id="player-audio"></audio>
+        <button id="backBtn" class="secondary-btn dynamic-element" onclick="goToSlide(1)">Back to Start</button>
     </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
