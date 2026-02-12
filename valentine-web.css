@@ -49,10 +49,10 @@ body {
 }
 
 .title-valentine {
-    font-size: 3.5rem; 
+    font-size: 3rem; 
     font-weight: 800;
     color: var(--van-dyke);
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
     line-height: 1.2;
 }
 
@@ -135,17 +135,35 @@ input {
 }
 
 #main-heart {
-    font-size: 12rem;
+    font-size: 10rem;
     cursor: pointer;
     color: var(--pink-lavender);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     user-select: none;
-    margin: 20px 0;
+    margin: 10px 0;
+}
+
+.main-message {
+    max-width: 600px; 
+    margin: 10px auto 0; 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    font-weight: 500; 
+    padding: 0 20px;
+    color: var(--van-dyke);
+}
+
+#slide-2 > p:nth-of-type(1) { 
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    opacity: 0.7;
 }
 
 .progress-container {
     width: 250px;
-    height: 15px;
+    height: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border: 3px solid var(--van-dyke);
     border-radius: 10px;
     background: rgba(255,255,255,0.5);
@@ -273,40 +291,40 @@ input {
     transition: top 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* FIXED LYRICS */
+/* Fixed lyrics */
 #lyrics-wrapper {
-    height: 180px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    margin-top: 15px;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-    padding-left: 5px; 
-}
+        height: 150px;
+        padding: 0 !important; 
+        width: 100% !important;
+        overflow: hidden; 
+    }
 
 .lyric-line {
-    font-size: 0.95rem; 
-    color: inherit;
-    opacity: 0.4;
-    margin: 20px 0;
-    transition: all 0.4s ease;
-    font-weight: 600;
-    min-height: 28px;
-    line-height: 1.4;
-    white-space: normal !important; 
-    word-wrap: break-word;
-    display: block;
-    width: 100%;
-    text-align: left; 
-    transform-origin: left center; 
-}
+        font-size: 0.95rem; 
+        color: inherit;
+        opacity: 0.5;
+        margin: 10px 0; /* Jarak antar baris dirapikan */
+        transition: all 0.4s ease;
+        font-weight: 600;
+        min-height: 28px;
+        line-height: 1.6;
+        
+        display: block;
+        width: 100%;
+        text-align: center !important; /* Paksa Rata Tengah */
+        transform-origin: center center !important; /* Membesar dari tengah */
+        
+        /* Hapus white-space: normal kalau mau satu baris, 
+        tapi 'normal' lebih aman buat lirik panjang */
+        white-space: normal; 
+        word-wrap: break-word;
+    }
 
 .lyric-line.active {
     opacity: 1;
-    transform: scale(1.05); 
-    text-shadow: 0 0 10px rgba(255,255,255,0.2);
-    margin-left: 0px; 
+    transform: scale(1.1); 
+    text-shadow: 0 0 15px rgba(255,255,255,0.3);
+    margin-left: 0 !important; 
 }
 
 /* Fades and buttons*/
@@ -358,100 +376,286 @@ input {
         opacity: 0; 
     }
 }
+
+.song-item {
+    display: flex !important; 
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin-top: 8px;
+    cursor: pointer;
+    overflow: hidden; 
+    transition: all 0.3s ease;
+    padding: 0 !important; 
+    height: 60px; 
+    width: 100%;
+    color: var(--van-dyke);
+}
+
+.song-item:hover {
+    background: white;
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.part-img {
+    width: 60px !important; 
+    height: 100%;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+.part-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.part-title {
+    flex: 2;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.part-artist {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-style: italic;
+    color: #666;
+    background: rgba(0,0,0,0.03);
+    padding: 0 5px;
+    text-align: center;
+}
+
+/* --- PHANTOM BOX: MAKNA LAGU (RESPONSIF) --- */
+
+.meaning-phantom-box {
+    /* TAMPILAN AWAL (TERTUTUP) */
+    /* width: fit-content bikin dia nempel tengah dan rapi */
+    width: fit-content; 
+    min-width: 200px; /* Lebar minimum biar gak kekecilan */
+    margin: 20px auto 10px; /* Posisi tengah */
+    padding: 0 20px;
+    
+    background: transparent !important; /* Transparan (Hantu) */
+    border: none !important;
+    
+    max-height: 40px; /* Tinggi cuma segaris teks */
+    overflow: hidden; /* Sembunyikan isinya */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animasi smooth */
+    
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* Teks Pemicu "BEHIND THIS SONG" */
+.meaning-trigger {
+    margin: 0;
+    line-height: 40px; /* Center vertikal */
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--van-dyke);
+    text-transform: uppercase;
+    
+    /* Garis bawah estetik */
+    border-bottom: 2px solid var(--pink-lavender); 
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.meaning-trigger::after {
+    content: ' ▼';
+    font-size: 0.7rem;
+    margin-left: 8px;
+    transition: transform 0.4s;
+    display: inline-block;
+}
+
+/* TAMPILAN SAAT DIKLIK (TERBUKA/EXPANDED) */
+.meaning-phantom-box.expanded {
+    /* Berubah jadi kotak solid */
+    background: rgba(255, 255, 255, 0.85) !important; 
+    border: 2px solid var(--van-dyke) !important;
+    border-radius: 20px;
+    
+    /* RESPONSIF: Melebar tapi gak berlebihan */
+    width: 90%; 
+    max-width: 600px; /* Mentok di 600px buat Desktop */
+    
+    max-height: 400px; /* Ruang cukup buat curhatan panjang */
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.meaning-phantom-box.expanded .meaning-trigger {
+    border-bottom: none; /* Hilangkan garis bawah */
+    margin-bottom: 15px;
+    width: 100%;
+    display: block;
+    opacity: 0.7;
+}
+
+.meaning-phantom-box.expanded .meaning-trigger::after {
+    transform: rotate(180deg); /* Panah muter */
+}
+
+/* Isi Curhatan */
+.meaning-content {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.4s ease 0.1s; /* Delay dikit biar manis */
+    text-align: left; /* Rata kiri biar enak dibaca */
+}
+
+.meaning-phantom-box.expanded .meaning-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#song-meaning-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--van-dyke);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Efek Hover di Desktop */
+@media (hover: hover) {
+    .meaning-phantom-box:not(.expanded):hover .meaning-trigger {
+        color: var(--pink-lavender);
+        border-color: var(--van-dyke);
+        transform: translateY(-2px);
+    }
+}
+
 /* Device responsive */
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
     body {
         min-height: 100dvh; 
-        overflow-y: auto;
+        overflow-y: auto !important;
+        overflow-x: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow-y: auto !important;
-        overflow-x: hidden;
     }
 
     .slide {
-        height: auto;
-        display: flex;
         justify-content: center !important; 
-        align-items: center;
-        min-height: 100dvh;
-        width: 100%;
         padding: 20px;
-        display: flex;
-        flex-direction: column;
+        min-height: 100dvh;
     }
 
     .music-layout {
         flex-direction: column;
-        gap: 15px; 
+        gap: 20px;
         width: 100%;
         margin: 0;
     }
 
+    /* Modified sidebar for mobile */
     .music-sidebar {
-        width: 100% !important;
-        background: rgba(255, 255, 255, 0.4) !important; 
-        flex-direction: row !important;
-        overflow-x: auto !important;
-        padding: 10px !important;
-        gap: 8px;
-        border-radius: 15px;
-        backdrop-filter: blur(5px);
-    border: 1px solid var(--accent-dynamic) !important;
+        width: fit-content !important; 
+        margin: 0 auto;
+        padding: 5px 10px !important;
+        
+        background: transparent !important; 
+        border: none !important; 
+        box-shadow: none !important;
+        
+        max-height: 40px; 
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .music-sidebar > p {
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: var(--van-dyke) !important; 
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 2px solid var(--pink-lavender); 
+        padding-bottom: 2px;
+        line-height: normal !important;
+        width: auto !important;
+    }
+
+    .music-sidebar > p::after {
+        content: ' ▼';
+        font-size: 0.6rem;
+        margin-left: 5px;
+        color: var(--pink-lavender);
+        display: inline-block;
+        transition: transform 0.3s;
+    }
+
+    .music-sidebar.expanded {
+        background: var(--pistachio) !important; 
+        border: 2px solid var(--van-dyke) !important;
+        width: 90% !important; 
+        max-height: 350px;
+        border-radius: 20px;
+        padding: 15px 10px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    }
+
+    .music-sidebar.expanded > p {
+        color: white !important;
+        border-bottom: none;
+        margin-bottom: 10px;
+    }
+
+    .music-sidebar.expanded > p::after {
+        color: white;
+        transform: rotate(180deg);
     }
 
     .song-item {
-        flex: 0 0 auto;
-        padding: 8px 15px !important; 
-        font-size: 0.75rem !important;
-        min-width: 120px !important;
-        text-align: center;
-        background: white !important;
+        opacity: 0;
+        transform: translateY(-10px);
     }
 
+    .music-sidebar.expanded .song-item {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .content-area { width: 100%; }
+    
     .custom-box {
-        padding: 20px 15px !important; 
-        border-radius: 20px;
+        padding: 25px 20px !important; 
         width: 100%;
         box-sizing: border-box;
     }
 
-    .music-header {
-        gap: 10px;
-    }
-
-    #album-art {
-        width: 60px; 
-        height: 60px;
-    }
-
-    .header-text h2 { font-size: 1.1rem; margin: 0; }
-    .header-text h4 { font-size: 0.8rem; }
-
-    #lyrics-wrapper {
-        height: 150px; 
-        padding: 0 5px;
-    }
+    #lyrics-wrapper { height: 150px; }
 
     .lyric-line {
-        font-size: 0.9rem !important;
-        line-height: 1.3;
+        font-size: 0.95rem !important;
         white-space: normal !important;
-        word-wrap: break-word;
         text-align: center;
-        margin: 15px 0;
-        width: 100%;
-        transform-origin: center center;
     }
-
-    .lyric-line.active {
-        transform: scale(1) !important; 
-    }
-
-    #backBtn {
-        margin: 20px auto !important;
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
+    
+    #backBtn { margin: 20px auto !important; }
 }

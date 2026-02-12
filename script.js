@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.pointerEvents = 'none'; container.style.zIndex = '-1';
         body.appendChild(container);
 
+    const sidebar = document.querySelector('.music-sidebar');
+    
+    if (sidebar) {
+        sidebar.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1280) {
+                this.classList.toggle('expanded');
+                if (navigator.vibrate) navigator.vibrate(30); 
+            }
+        });
+    }
+
         for (let i = 0; i < 25; i++) {
             const heart = document.createElement('div');
             heart.className = 'floating-symbol';
@@ -92,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Who Knows',
             author: 'Daniel Caesar',
             image: 'images/whoknows-danielcaesar.png', 
+            meaning: "'Maybe we get married one day, but who knows?' has always made me think about what if the world is not this cruel to us. About the what ifs of our story would lead to a happy ending, eventually. But who knows? Maybe in another life, in another universe, we would be able to live that happily ever after we always dreamed of. But in this life, I just want you to know that I will love you always, no matter what happens.",
             theme: {
                 bg: '#1a1a1d', box: '#2d2d35', text: '#e0e0e0', accent: '#6f7d96'
             },
@@ -105,7 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'musics/disarankandibandung.mp3': {
             title: 'disarankan di bandung',
             author: 'Dongker, Jason Ranti',
-            image: 'images/disarankandibandung-dongker-jasonranti.png', 
+            image: 'images/disarankandibandung-dongker-jasonranti.png',
+            meaning: "'Bajingan! Keparat! Baiknya m'reka masuk neraka untungnya ku bertemu denganmu di sela sempit hidup' sentences which means despite all of the mockery, sorrows, disdain thrown to us, I will always be grateful to have you in my life. You are my light in the dark and my hope in despair. No matter how hard life is, as long as I have you by my side, I believe we can overcome anything together.",
             theme: {
                 bg: '#fdf6e3', box: '#fff0f5', text: '#5e4b45', accent: '#d8a7b1'
             },
@@ -122,25 +135,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 67, text: "Untungnya ku bertemu denganmu" },
                 { time: 72, text: "Di sela sempit hidup ini" },
                 { time: 75, text: "Di Bandung, di sana" },
-                { time: 85, text: "Kulihat wajah yang lain" },
-                { time: 90, text: "Di Bandung, di mana" },
-                { time: 95, text: "Gerangan dia berada?" },
+                { time: 80, text: "Kulihat wajah yang lain" },
+                { time: 83, text: "Di Bandung, di mana" },
+                { time: 87, text: "Gerangan dia berada?" },
                 { time: 100, text: "Di Bandung, di Ganesha" },
                 { time: 105, text: "Bibirnya merah di kanvas" },
-                { time: 110, text: "Di Bandung, di Ganesha" },
-                { time: 115, text: "Kulihat bukunya di kelas" },
+                { time: 107, text: "Di Bandung, di Ganesha" },
+                { time: 110, text: "Masa lalu melintas"}, 
                 { time: 120, text: "Di Bandung, di Ganesha" },
-                { time: 125, text: "Nama kita terukir jelas" },
+                { time: 125, text: "Kulihat bukunya di kelas" },
                 { time: 130, text: "Di Bandung, di Ganesha" },
-                { time: 135, text: "Waktu-waktu merintis" },
+                { time: 135, text: "Nama kita terukir jelas" },
                 { time: 140, text: "Di Bandung, di Ganesha" },
-                { time: 145, text: "Rasa kita dibaptis" }
+                { time: 145, text: "Waktu-waktu merintis" },
+                { time: 150, text: "Di Bandung, di Ganesha" },
+                { time: 155, text: "Rasa kita dibaptis" }
             ]
         },
         'musics/diakhirperang.mp3': {
             title: 'Di Akhir Perang',
             author: 'Nadin Amizah',
             image: 'images/diakhirperang-nadinamizah.png', 
+            meaning: "'Dan kubisikkan asal kau tahu bagaimana rasanya bahagia sepenuhnya sampai ku merasa lega, kau merasa lega' the song you gave me. I cried for several times on my first time listening to this, something has shattered within me. I believe, the joyous final moment of us still awaiting for our arrival. Whenever that happens, I hope we can get ourselves to that certain point Nadin has told us.",
             theme: {
                 bg: '#e6f7ff', box: '#ffffff', text: '#4a4a4a', accent: '#9ad7ff'
             },
@@ -194,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, delayPlay);
             
             // Lyrics Sync
+           // --- UPDATE LOGIKA SCROLL LIRIK (DENGAN KOREKSI VISUAL) ---
             audio.ontimeupdate = () => {
                 songData.lyrics.forEach((line, index) => {
                     if (audio.currentTime >= line.time) {
@@ -207,7 +224,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             const wrapper = document.getElementById('lyrics-wrapper');
                             const lyricsActiveContainer = document.getElementById('lyrics-active');
                             
-                            const scrollPos = activeLine.offsetTop - (wrapper.offsetHeight / 2) + (activeLine.offsetHeight / 2);
+                            // RUMUS CENTER + KOREKSI MANUAL
+                            // offsetTop: Posisi lirik dari atas
+                            // wrapper.offsetHeight / 2: Setengah tinggi kotak (titik tengah)
+                            // activeLine.offsetHeight / 2: Setengah tinggi teks liriknya
+                            
+                            let scrollPos = activeLine.offsetTop - (wrapper.offsetHeight / 2) + (activeLine.offsetHeight / 2);
+                            
+                            // KOREKSI: Kurangi 20px biar naik dikit (Visual Adjustment)
+                            scrollPos = scrollPos + 10; 
+
                             lyricsActiveContainer.style.top = `-${scrollPos}px`;
                         }
                     }
@@ -217,11 +243,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Title and Lyrics Update
+    // --- 2. UPDATE LOGIKA GANTI LAGU ---
     function updateMusicContent(data) {
         document.getElementById('display-title').innerText = data.title;
         document.getElementById('display-author').innerText = data.author;
-        document.getElementById('album-art').src = data.image; // Ganti gambar album!
+        document.getElementById('album-art').src = data.image;
 
+        // >> BAGIAN PENTING: UPDATE MAKNA SECARA OTOMATIS <<
+        const meaningText = document.getElementById('song-meaning-text');
+        if (meaningText) {
+            // Langsung isi dengan makna dari data lagu
+            meaningText.innerText = data.meaning; 
+        }
+
+        // Reset kotak makna jadi tertutup (kuncup) setiap ganti lagu
+        // Biar rapi, nanti Aluvia buka sendiri kalau mau baca
+        const meaningBox = document.querySelector('.meaning-phantom-box');
+        if (meaningBox) {
+            meaningBox.classList.remove('expanded');
+        }
+
+        // ... (kode lirik di bawahnya biarkan saja) ...
         const lyricsActive = document.getElementById('lyrics-active');
         lyricsActive.innerHTML = ''; lyricsActive.style.top = "0px";
         
@@ -241,4 +283,69 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     createHearts();
+
+    // --- FUNGSI BARU: GENERATE PLAYLIST KEREN (3 KOLOM) ---
+    function generatePlaylist() {
+        const sidebar = document.querySelector('.music-sidebar');
+        
+        // 1. Reset sidebar, sisakan judul "OUR PLAYLIST" aja
+        // Kita simpan elemen <p> yang sudah ada biar panah dropdown-nya aman
+        const headerTitle = sidebar.querySelector('p');
+        sidebar.innerHTML = ''; 
+        sidebar.appendChild(headerTitle);
+
+        // 2. Ambil data dari playlistData
+        for (let source in playlistData) {
+            let song = playlistData[source];
+
+            // Bikin Kotak Lagu Utama
+            let item = document.createElement('div');
+            item.className = 'song-item';
+
+            // BAGIAN KIRI: Gambar Album
+            let imgPart = document.createElement('div');
+            imgPart.className = 'part-img';
+            let img = document.createElement('img');
+            img.src = song.image; // Ambil gambar asli dari data
+            imgPart.appendChild(img);
+
+            // BAGIAN TENGAH: Judul Lagu
+            let titlePart = document.createElement('div');
+            titlePart.className = 'part-title';
+            titlePart.innerText = song.title;
+
+            // BAGIAN KANAN: Penyanyi
+            let artistPart = document.createElement('div');
+            artistPart.className = 'part-artist';
+            artistPart.innerText = song.author;
+
+            // Gabungin (Rakut) elemennya
+            item.appendChild(imgPart);
+            item.appendChild(titlePart);
+            item.appendChild(artistPart);
+
+            // Bikin bisa diklik untuk mainkan lagu
+            item.addEventListener('click', function(e) {
+                // Stop event biar gak nutup dropdown (opsional)
+                e.stopPropagation(); 
+                changeMusic(source);
+                
+                // Tutup dropdown otomatis di HP setelah milih lagu
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('expanded');
+                }
+            });
+
+            sidebar.appendChild(item);
+        }
+    }
+    generatePlaylist();
+
+    // Meaning Box Toggle
+    const meaningBox = document.querySelector('.meaning-phantom-box');
+    if (meaningBox) {
+        meaningBox.addEventListener('click', function() {
+            this.classList.toggle('expanded');
+        });
+    }
 });

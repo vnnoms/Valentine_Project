@@ -51,10 +51,7 @@
             
             <div class="music-sidebar dynamic-element">
                 <p style="font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; opacity: 0.8;">OUR PLAYLIST</p>
-                <div class="song-item" onclick="changeMusic('musics/whoknows.mp3')">🎵 Who Knows</div>
-                <div class="song-item" onclick="changeMusic('musics/disarankandibandung.mp3')">🎵 disarankan di bandung</div>
-                <div class="song-item" onclick="changeMusic('musics/diakhirperang.mp3')">🎵 Di Akhir Perang</div>
-            </div>
+                </div>
 
             <div class="content-area">
                 
@@ -96,6 +93,14 @@
         </div>
 
         <audio id="player-audio"></audio>
+
+        <div class="meaning-phantom-box dynamic-element">
+            <p class="meaning-trigger">💌 BEHIND THIS SONG ▼</p>
+            <div class="meaning-content">
+                <p id="song-meaning-text">Click a song to see why I chose it for you...</p>
+            </div>
+        </div>
+
         <button id="backBtn" class="secondary-btn dynamic-element" onclick="goToSlide(1)">Back to Start</button>
     </section>
 
