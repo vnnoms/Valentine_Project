@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const passField = document.getElementById('passInput');
 
             // Password Check
+            // CHANGE PASSWORD AND USERNAME HERE IF NEEDED 
             if (userField.value === "Aluvia Daniella" && passField.value === "17112025") {
                 
                 loginBtn.innerHTML = "Access Granted! &hearts;"; 
@@ -97,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
     // Music section logic
-    // Song Data
+    // SONG DATA, CHANGE IF NEEDED
     const playlistData = {
         'musics/whoknows.mp3': {
             title: 'Who Knows',
@@ -108,10 +109,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 bg: '#1a1a1d', box: '#2d2d35', text: '#e0e0e0', accent: '#6f7d96'
             },
             lyrics: [
-                { time: 0, text: "Maybe we get married one day, but who knows?" },
-                { time: 5, text: "Think I'll take that thought to the grave, but who knows?" },
-                { time: 10, text: "I know that I'll love you always" },
-                { time: 15, text: "Yeah, girl you, and I'd like that" }
+                { time: 0, text: "I'll probably be a waste of your time, but who knows?" },
+                { time: 8, text: "Chances are I'll step out of line, but who knows?" },
+                { time: 16, text: "Lately, you've set up in my mind" },
+                { time: 19, text: "Yeah, girl, you, and I like that" },
+                { time: 32, text: "Lately, I've been thinking that perhaps I am a coward"},
+                { time: 40, text: "Hiding in a disguise of an ever-giving flower"},
+                { time: 48, text: "Incompetent steward of all of that sweet, sweet power"},
+                { time: 64, text: "Yesterday was feeling so good, now it's gone"},
+                { time: 71, text: "I'd feel like that always if I could, is that wrong?"},
+                { time: 80, text: "Tell me 'bout the city you're from"},
+                { time: 83, text: "Is it hot? Does it snow there?"},
+                { time: 95, text: "Lately, I've been thinking 'bout my precarious future"},
+                { time: 103, text: "Will you be there with me by my side, my girl, my shooter?"},
+                { time: 111, text: "Who's to say who calculates? Not me, I'm no computer" },
+                { time: 126, text: "Is it a crime to be unsure?" },
+                { time: 133, text: "In time we'll find" },
+                { time: 136, text: "If it's sustainable" },
+                { time: 143, text: "You're pure, you're kind" }
             ]
         },
         'musics/disarankandibandung.mp3': {
@@ -137,19 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 75, text: "Di Bandung, di sana" },
                 { time: 80, text: "Kulihat wajah yang lain" },
                 { time: 83, text: "Di Bandung, di mana" },
-                { time: 87, text: "Gerangan dia berada?" },
+                { time: 88, text: "Gerangan dia berada?" },
                 { time: 100, text: "Di Bandung, di Ganesha" },
                 { time: 105, text: "Bibirnya merah di kanvas" },
-                { time: 107, text: "Di Bandung, di Ganesha" },
-                { time: 110, text: "Masa lalu melintas"}, 
-                { time: 120, text: "Di Bandung, di Ganesha" },
-                { time: 125, text: "Kulihat bukunya di kelas" },
-                { time: 130, text: "Di Bandung, di Ganesha" },
-                { time: 135, text: "Nama kita terukir jelas" },
-                { time: 140, text: "Di Bandung, di Ganesha" },
-                { time: 145, text: "Waktu-waktu merintis" },
-                { time: 150, text: "Di Bandung, di Ganesha" },
-                { time: 155, text: "Rasa kita dibaptis" }
+                { time: 108, text: "Di Bandung, di Ganesha" },
+                { time: 113, text: "Masa lalu melintas"}, 
+                { time: 116, text: "Di Bandung, di Ganesha" },
+                { time: 121, text: "Kulihat bukunya di kelas" },
+                { time: 124, text: "Di Bandung, di Ganesha" },
+                { time: 129, text: "Nama kita terukir jelas" },
+                { time: 132, text: "Di Bandung, di Ganesha" },
+                { time: 138, text: "Waktu-waktu merintis" },
+                { time: 141, text: "Di Bandung, di Ganesha" },
+                { time: 146, text: "Rasa kita dibaptis" }
             ]
         },
         'musics/diakhirperang.mp3': {
