@@ -30,11 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.addEventListener('click', () => {
             const userField = document.getElementById('userInput');
             const passField = document.getElementById('passInput');
-            const errorMsg = document.getElementById('errorMessage');
+
+            // Password Check
             if (userField.value === "Aluvia Daniella" && passField.value === "17112025") {
-                goToSlide(2);
+                
+                loginBtn.innerHTML = "Access Granted! &hearts;"; 
+                loginBtn.style.backgroundColor = "#48372f";
+                loginBtn.style.color = "white";
+                loginBtn.style.transform = "scale(0.95)"; 
+                loginBtn.style.transition = "all 0.3s ease";
+
+                setTimeout(() => {
+                    goToSlide(2);
+                }, 1000); 
+
             } else {
-                if (errorMsg) errorMsg.style.display = 'block';
+                loginBtn.style.animation = "shake 0.5s"; 
+                setTimeout(() => loginBtn.style.animation = "", 500);
+                alert("Sorry, your acces has been denied");
             }
         });
     }
