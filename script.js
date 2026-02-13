@@ -119,14 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 { time: 64, text: "Yesterday was feeling so good, now it's gone"},
                 { time: 71, text: "I'd feel like that always if I could, is that wrong?"},
                 { time: 80, text: "Tell me 'bout the city you're from"},
-                { time: 83, text: "Is it hot? Does it snow there?"},
+                { time: 82, text: "Is it hot? Does it snow there?"},
                 { time: 95, text: "Lately, I've been thinking 'bout my precarious future"},
                 { time: 103, text: "Will you be there with me by my side, my girl, my shooter?"},
                 { time: 111, text: "Who's to say who calculates? Not me, I'm no computer" },
-                { time: 126, text: "Is it a crime to be unsure?" },
+                { time: 127, text: "Is it a crime to be unsure?" },
                 { time: 133, text: "In time we'll find" },
-                { time: 136, text: "If it's sustainable" },
-                { time: 143, text: "You're pure, you're kind" }
+                { time: 137, text: "If it's sustainable" },
+                { time: 143, text: "You're pure, you're kind" },
+                { time: 146, text: "Mature, divine" },
+                {  time : 150, text: "You might be too good for me, unattainable" },
+                { time: 190, text: "Maybe we get married one day, but who knows?" },
+                { time: 198, text: "Think I'll take that thought to the grave, but who knows?" },
+                { time: 207, text: "I know that I'll love you always" },
+                { time: 210, text: "Yeah, girl you, and I'd like that" }
             ]
         },
         'musics/disarankandibandung.mp3': {
