@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'disarankan di bandung',
             author: 'Dongker, Jason Ranti',
             image: 'images/disarankandibandung-dongker-jasonranti.png',
-            meaning: "'Bajingan! Keparat! Baiknya m'reka masuk neraka untungnya ku bertemu denganmu di sela sempit hidup' sentences which means despite all of the mockery, sorrows, disdain thrown to us, I will always be grateful to have you in my life. Within dispair, misery, and all of the woeful things, you are the one who I always come home to. Your presence alone speaks safety, home which no one could ever replace. No matter how hard life is, as long as I have you by my side, I believe we can overcome anything together.",
+            meaning: "'Bajingan! Keparat! Baiknya m'reka masuk neraka untungnya ku bertemu denganmu di sela sempit hidup' sentences which means despite all of the mockery, sorrows, disdain thrown to us, I will always be grateful to have you in my life. Within despair, misery, and all of the woeful things, you are the one who I always come home to. Your presence alone speaks safety, home which no one could ever replace. No matter how hard life is, as long as I have you by my side, I believe we can overcome anything together.",
             theme: {
                 bg: '#fdf6e3', box: '#fff0f5', text: '#5e4b45', accent: '#d8a7b1'
             },
