@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Who Knows',
             author: 'Daniel Caesar',
             image: 'images/whoknows-danielcaesar.png', 
-            meaning: "'Maybe we get married one day, but who knows?' has always made me think about what if the world is not this cruel to us. About the what ifs of our story would lead to a happy ending, eventually. But who knows? Maybe in another life, in another universe, we would be able to live that happily ever after we always dreamed of. But in this life, I just want you to know that I will love you always, no matter what happens.",
+            meaning: "'Maybe we get married one day, but who knows?' has always made me think about what if the world is not this cruel to us. About the what ifs of our story would lead to a happy ending, eventually. But who knows? Maybe in another life, in another universe, in another lifetime we would be able to live that happily ever after we always dreamed of. But in this life, in this lifetime, I just need you to know that I will always love you regardless anything, regardless all of the sorrows we've been constantly indulges, regardless all of the remorse we might have.",
             theme: {
                 bg: '#1a1a1d', box: '#2d2d35', text: '#e0e0e0', accent: '#6f7d96'
             },
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'disarankan di bandung',
             author: 'Dongker, Jason Ranti',
             image: 'images/disarankandibandung-dongker-jasonranti.png',
-            meaning: "'Bajingan! Keparat! Baiknya m'reka masuk neraka untungnya ku bertemu denganmu di sela sempit hidup' sentences which means despite all of the mockery, sorrows, disdain thrown to us, I will always be grateful to have you in my life. You are my light in the dark and my hope in despair. No matter how hard life is, as long as I have you by my side, I believe we can overcome anything together.",
+            meaning: "'Bajingan! Keparat! Baiknya m'reka masuk neraka untungnya ku bertemu denganmu di sela sempit hidup' sentences which means despite all of the mockery, sorrows, disdain thrown to us, I will always be grateful to have you in my life. Within dispair, misery, and all of the woeful things, you are the one who I always come home to. Your presence alone speaks safety, home which no one could ever replace. No matter how hard life is, as long as I have you by my side, I believe we can overcome anything together.",
             theme: {
                 bg: '#fdf6e3', box: '#fff0f5', text: '#5e4b45', accent: '#d8a7b1'
             },
@@ -182,12 +182,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 bg: '#e6f7ff', box: '#ffffff', text: '#4a4a4a', accent: '#9ad7ff'
             },
             lyrics: [
-                { time: 0, text: "Kuwarnai tanganmu yang mati" },
-                { time: 5, text: "Biar kau lihat dunia tak lagi menyakiti" },
-                { time: 10, text: "Dan kubisikkan asal kau tahu bagaimana" },
-                { time: 15, text: "Rasanya bahagia sepenuhnya sampai" },
-                { time: 20, text: "Ku merasa lega, kau merasa lega" },
-                { time: 25, text: "Ku sampai di sana" }
+                { time: 15, text: "Perlahan akan" },
+                { time: 22, text: "Kuajarkan cara" },
+                { time: 29, text: "Menanam menuai" },
+                { time: 35, text: "Baik buruk di dunia" },
+                { time: 42, text: "Kuwarnai tanganmu yang mati" },
+                { time: 49, text: "Biar kau lihat dunia tak lagi menyakiti"},
+                { time: 60, text: "Dan kubisikkan asal kau tahu bagaimana"},
+                { time: 66, text: "Rasanya bahagia sepenuhnya" },
+                { time: 72, text: "Sampai ku merasa lega, kau merasa lega" },
+                { time: 80, text: "Ku sampai di sana" },
+                { time: 87, text: "Perlahan telah" },
+                { time: 94, text: "Kau ajarkan cara" },
+                { time: 101, text: "Menerima rasa" },
+                { time: 107, text: "Baik buruk yang kupunya" },
+                { time: 114, text: "Kau panggil jahat yang menyelimuti" },
+                { time: 121, text: "Sampai kutahu dunia tak lagi menyakiti" },
+                { time: 131, text: "Dan kubisikkan asal kau tahu bagaimana" },
+                { time: 138, text: "Rasanya bahagia sepenuhnya" },
+                { time: 144, text: "Sampai ku merasa lega, kau merasa lega" },
+                { time: 152, text: "Ku sampai di sana" },
+                { time: 160, text: "Perang telah usai" },
+                { time: 167, text: "Perang telah usai" },
+                { time: 173, text: "Aku bisa pulang" },
+                { time: 180, text: "Kubaringkan panah dan berteriak" },
+                { time: 185, text: "'Menang!'"},
+                { time : 190, text: "Dan kubisikkan asal kau tahu bagaimana" },
+                { time: 196, text: "Rasanya bahagia sepenuhnya" },
+                { time: 203, text: "Sampai ku merasa lega, kau merasa lega" },
+                { time: 210, text: "Ku sampai di sana, kau sampai disana" },
+                { time: 215, text: "Ku sampai di sana" },
+                { time: 220, text: "Kau sampai disana" }
+
             ]
         }
     };

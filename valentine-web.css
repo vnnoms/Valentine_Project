@@ -213,6 +213,8 @@ input {
     padding: 0 !important; 
     height: 60px; 
     width: 100%;
+    
+    /* FIX: Force Dark Brown color so it is visible even if theme is dark */
     color: #48372f !important;
 }
 
@@ -240,6 +242,7 @@ input {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* FIX: Ensure title inherits dark color */
     color: inherit;
 }
 
